@@ -3,7 +3,7 @@ import BasicLayout from "./layout/BasicLayout";
 import Home from "./containers/views/Home";
 
 const AppRouter = () => (
-  <BrowserRouter>
+  <BrowserRouter basename="/pixel-art-portfolio">
     <BasicLayout>
       <Routes>
         <Route path="/" element={<Home />} />
