@@ -1,0 +1,212 @@
+/* SpeechBubble.css */
+.nes-speech-bubble {
+  position: relative;
+  display: inline-block;
+  background: #fff;
+  border: 4px solid #222;
+  font-size: 1rem;
+  color: #222;
+  padding: 16px 24px;
+  margin: 16px;
+  box-shadow: 4px 4px 0 #888;
+  border-radius: 0;
+}
+
+.nes-speech-bubble::after,
+.nes-speech-bubble::before {
+  content: "";
+  position: absolute;
+  left: 35px; /* 꼬리 위치 조절 */
+  bottom: -22px; /* 꼬리 위치 조절 */
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* 꼬리 테두리 (바깥쪽, 더 두껍게) */
+.nes-speech-bubble::before {
+  border-width: 0 0 20px 18px;
+  border-color: transparent transparent transparent #222;
+  z-index: 1;
+  bottom: -24px;
+  left: 38px;
+}
+
+/* 꼬리 바탕색 (안쪽) */
+.nes-speech-bubble::after {
+  border-width: 0 0 20px 16px;
+  border-color: transparent transparent transparent #fff;
+  left: 37px;
+  bottom: -20px;
+  z-index: 2;
+}
+
+/* PixelBoard.css */
+.pixel-board {
+  background: #f5e6c8; /* 배경 베이지 */
+  border: 6px solid #ba7a3a; /* 중간톤 브라운, 픽셀 테두리 */
+  box-shadow: 0 8px 0 #d7b899, 0 10px 0 #99713a; /* 진한 그림자 효과 */
+  border-radius: 10px;
+  padding: 26px 30px 20px 30px;
+  color: #363016;
+  min-width: 360px;
+  max-width: 520px;
+  position: relative;
+}
+
+.pixel-board-title {
+  background: linear-gradient(90deg, #ede5cf 0%, #f3dfb6 100%);
+  border: 4px solid #c9975b;
+  border-radius: 6px;
+  padding: 10px 28px;
+  margin: 12px 0 18px 0;
+  font-size: 1.06em;
+  color: #363016;
+  text-align: center;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 0 #b7a367;
+}
+
+.pixel-board-biography {
+  background: #faf7e0;
+  border: 3px solid #d2b596;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 0 #b7a367;
+  font-size: 0.96em;
+}
+
+.pixel-board-slot {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.pixel-board-statusbars {
+  display: flex;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.pixel-board-statusbar {
+  background: #e9d8b5;
+  border: 2.5px solid #c9975b;
+  border-radius: 4px;
+  padding: 6px 12px;
+  min-width: 80px;
+  position: relative;
+  font-size: 0.93em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pixel-board-bar {
+  height: 14px;
+  margin-top: 4px;
+  border-radius: 2px;
+  box-shadow: 0 1px #b7a367;
+  animation: bargrow 1.5s cubic-bezier(0.73, 0.5, 0.44, 1.41) 1;
+}
+
+@keyframes bargrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.pixel-board-badges {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.pixel-board-badge {
+  background: linear-gradient(90deg, #ede5cf 0%, #fff2dc 100%);
+  border: 2px solid #ba7a3a;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 #b7a367;
+  padding: 6px 18px;
+  color: #4a361a;
+  font-size: 0.93em;
+  font-family: inherit;
+}
+
+.pixel-board-content {
+  margin-top: 16px;
+  font-size: 0.98em;
+  color: #363016;
+}
+.pixel-board {
+  /* 계단형 픽셀 테두리: 단색+box-shadow 활용 (double outline 느낌) */
+  background: #f5e6c8;
+  border: 6px solid #ba7a3a;
+  box-shadow: 0 0 0 3px #ede5cf, /* 바깥 베이지 테두리 */ 8px 8px 0 0 #6b4e1e,
+    /* 우하단 픽셀 브라운 그림자(계단효과) */ 0 0 0 10px #b38250; /* 추가 넓은 테두리로 픽셀 느낌 */
+  border-radius: 0; /* 각진 사각형 */
+  padding: 28px 32px 22px 32px;
+  color: #363016;
+  min-width: 360px;
+  max-width: 520px;
+  position: relative;
+  /* subtle dot pattern + 종이 질감 (SVG, PNG 등 data-url도 오케이) */
+  background-image: repeating-linear-gradient(
+      135deg,
+      #ecd6bb 0px,
+      #ecd6bb 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      #f7ebda 0px,
+      #f7ebda 2px,
+      transparent 2px,
+      transparent 8px
+    ),
+    url('data:image/svg+xml;utf8,<svg width="40" height="40" fill="none" stroke="rgba(170,149,119,0.08)" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" x="8" y="15" fill="rgba(170,149,119,0.12)" /><rect width="1" height="1" x="26" y="32" fill="rgba(170,149,119,0.13)" /></svg>');
+  background-size: 16px 16px, 32px 32px, 40px 40px;
+  background-blend-mode: multiply;
+}
+
+/* 내부 섹션 박스도 보더, box-shadow로 픽셀 감성 */
+.pixel-board-title {
+  background: linear-gradient(90deg, #ede5cf 0%, #f3dfb6 100%);
+  border: 4px solid #c9975b;
+  box-shadow: 0 2px #ba7a3a, 2px 2px #b38250;
+  border-radius: 0;
+  padding: 10px 28px;
+  margin: 12px 0 18px 0;
+  font-size: 1.06em;
+  color: #363016;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.pixel-board-biography,
+.pixel-board-slot,
+.pixel-board-statusbar,
+.pixel-board-badge {
+  border: 2.5px solid #ba7a3a;
+  box-shadow: 0 2px #e9d8b5, 2px 2px #b38250;
+  border-radius: 0;
+}
+
+/* 도트 보더 강조: dotted/dashed border-image 적용 예시(옵션) */
+/*
+.pixel-board {
+  border-style: solid;
+  border-width: 8px;
+  border-image: url('도트패턴 PNG/PNG SVG Data URL') 8 round;
+}
+*/
+
+.pixel-board-content {
+  margin-top: 16px;
+  font-size: 0.98em;
+  color: #363016;
+}
