@@ -4,6 +4,7 @@ import { NavWidth } from "../styles/base.style";
 const BasicLayoutWrap = styled.div`
   display: flex;
   min-height: 100vh;
+  width: 100%;
   nav {
     position: fixed;
     z-index: 10;

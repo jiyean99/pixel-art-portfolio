@@ -21,7 +21,7 @@ const stepsCount = 300; // 배경 이미지의 가로 픽셀 수
 
 export const IntroSection = styled.section`
   position: relative;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   background: ${({ theme }) => theme.color.skyBg};
@@ -152,57 +152,95 @@ export const IntroSection = styled.section`
   }
 `;
 export const MyInfoSection = styled.section`
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  grid-template-rows: 220px 120px;
-  gap: 24px;
   background: ${({ theme }) => theme.color.mainBg};
+  color: ${({ theme }) => theme.color.themeTxt};
   padding: 48px;
-  min-height: 100vh;
-  .profile-area {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-    background: ${({ theme }) => theme.color.white};
-    border: 2px solid ${({ theme }) => theme.color.gray};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 220px;
+  height: fit-content;
+  display: grid;
+  grid-gap: 40px;
+  gap: 40px;
+  grid-template-rows: 1fr;
+  grid-template-columns: max(30%) auto;
+  .title-txt {
+    font-size: ${({ theme }) => theme.font.large};
+    font-weight: ${({ theme }) => theme.fontW.medium};
+    margin-bottom: 16px;
+    &--slogan {
+      line-height: ${({ theme }) => theme.font.xlarge};
+      font-size: ${({ theme }) => theme.font.xxlarge};
+      font-weight: ${({ theme }) => theme.fontW.medium};
+      position: absolute;
+      left: 0;
+      top: -60px;
+    }
+  }
+  .area-box {
+    padding: 40px 36px;
+    background: ${({ theme }) => theme.color.subBg};
+    border: 4px solid ${({ theme }) => theme.color.themeTxt};
+    &.profile-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile-img {
+      width: 50%;
+      max-width: 180px;
+    }
+    &:last-child {
+      line-height: ${({ theme }) => theme.font.large};
+      grid-column: 2 / span 2;
+      grid-row: 1 / span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 80px;
+      position: relative;
+    }
+    .sub-box {
+      // margin-bottom: 24px;
+    }
+  }
+  .bullet-list {
+    list-style: square;
+    margin-left: 24px;
   }
 
-  .info-area {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    background: ${({ theme }) => theme.color.whiteBg};
-    border: 2px solid ${({ theme }) => theme.color.gray};
-    padding: 24px 32px;
-    h1 {
-      font-size: ${({ theme }) => theme.font.largeNum};
+  @media (max-width: 1440px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 24px;
+    .area-box {
+      grid-column: 1 / 2 !important;
+      grid-row: auto !important;
+    }
+    .title-txt {
       margin-bottom: 16px;
-      font-weight: ${({ theme }) => theme.fontW.bold};
-    }
-    h2 {
-      font-size: ${({ theme }) => theme.font.large};
-      margin: 0 0 8px 0;
-    }
-    ul {
-      margin-bottom: 12px;
-      li {
-        font-size: ${({ theme }) => theme.font.medium};
-        margin-bottom: 5px;
+      &--slogan {
+        font-size: 2rem;
       }
     }
   }
 
-  .status-area {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
-    background: ${({ theme }) => theme.color.white};
-    border: 2px solid ${({ theme }) => theme.color.gray};
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* HP/status 그래프 등 */
+  @media (max-width: 768px) {
+    gap: 16px;
+    .area-box {
+      &:last-child {
+        margin-top: 30px;
+      }
+    }
+    .title-txt {
+      font-size: ${({ theme }) => theme.font.medium};
+      font-weight: ${({ theme }) => theme.fontW.medium};
+      margin-bottom: 16px;
+      &--slogan {
+        line-height: ${({ theme }) => theme.font.large};
+        font-size: ${({ theme }) => theme.font.large};
+        font-weight: ${({ theme }) => theme.fontW.medium};
+        position: absolute;
+        left: 0;
+        top: -35px;
+      }
+    }
   }
 `;
