@@ -65,10 +65,27 @@ export default function Home() {
   const characterBottom = windowHeight < 600 ? "37%" : "37%";
 
   const handleScrollDown = () => {
-    window.scrollBy({
-      top: 800,
-      behavior: "smooth",
-    });
+    const targetPosition = window.scrollY + windowHeight;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 2000; // 애니메이션 시간 (ms)
+    let startTime: number | null = null;
+
+    const easeInOutQuad = (t: number) =>
+      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // 이징 함수
+
+    const animation = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeInOutQuad(progress);
+      window.scrollTo(0, startPosition + distance * ease);
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
   };
 
   return (

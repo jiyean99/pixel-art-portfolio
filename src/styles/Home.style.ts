@@ -20,6 +20,10 @@ const repeatBgMoveAni = keyframes`
 const stepsCount = 300; // 배경 이미지의 가로 픽셀 수
 
 export const IntroSection = styled.section`
+  &.career-container {
+    position: fixed;
+  }
+
   position: relative;
   height: 100vh;
   width: 100%;
@@ -156,6 +160,7 @@ export const MyInfoSection = styled.section`
   color: ${({ theme }) => theme.color.themeTxt};
   padding: 48px;
   height: fit-content;
+  min-height: calc(100vh - 92px);
   display: grid;
   grid-gap: 40px;
   gap: 40px;
