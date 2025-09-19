@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import BasicLayout from "./layout/BasicLayout";
 import Home from "./containers/views/Home";
 import Career from "./containers/views/Career";
@@ -8,6 +8,8 @@ import Contact from "./containers/views/Contact";
 import { useEffect } from "react";
 
 const AppRouter = () => {
+  const basename = import.meta.env.VITE_BASENAME || "";
+
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
@@ -15,7 +17,7 @@ const AppRouter = () => {
   }, []);
 
   return (
-    <BrowserRouter basename="/pixel-art-portfolio">
+    <HashRouter basename={basename}>
       <BasicLayout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,7 +26,7 @@ const AppRouter = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </BasicLayout>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
