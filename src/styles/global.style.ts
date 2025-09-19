@@ -1,8 +1,17 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+    @font-face {
+    font-family: 'Jersey 25';
+    src: url('/fonts/Jersey25.woff2') format('woff2'),
+         url('/fonts/Jersey25.woff') format('woff'),
+         url('/fonts/Jersey25.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
   /* CSS reset 코드 시작 */
   html,
