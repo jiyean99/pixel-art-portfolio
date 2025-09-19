@@ -20,7 +20,8 @@ const CycleCharacterScroll: React.FC<CycleCharacterScrollProps> = ({
   const currentFrameRef = useRef(0);
   const lastScrollY = useRef(scrollY);
   const lastFrameChangeTime = useRef(0);
-  const frameChangeInterval = 100; // 100ms 이상 지나야 다음 프레임 변경
+  // const frameChangeInterval = 100; // 100ms 이상 지나야 다음 프레임 변경
+  console.log("currentFrame === ", currentFrame);
 
   useEffect(() => {
     const canvas = canvasRef.current;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import groundBgImg from "../../assets/images/bg/ground-bg.png";
 import mountainBgImg from "../../assets/images/bg/mountain-bg.png";
 import shadowBgImg from "../../assets/images/bg/shadow-bg.png";
