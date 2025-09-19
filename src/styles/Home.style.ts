@@ -22,7 +22,7 @@ export const stepsCount = 300; // 배경 이미지의 가로 픽셀 수
 export const CycleCharacterScrollWrap = styled.canvas`
   position: fixed;
   pointer-events: none;
-  bottom: 37dvh;
+  bottom: calc(37dvh + env(safe-area-inset-bottom));
   left: 19%;
   aspect-ratio: 1 / 1;
   width: 11.5% !important;
