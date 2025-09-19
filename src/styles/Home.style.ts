@@ -26,6 +26,8 @@ export const CycleCharacterScrollWrap = styled.canvas`
   left: 19%;
   aspect-ratio: 1 / 1;
   width: 11.5% !important;
+  min-height: 185px;
+  min-width: 185px;
   z-index: 1;
 `;
 
@@ -143,6 +145,7 @@ export const IntroSection = styled.section`
     z-index: 1;
     width: 13%;
     image-rendering: pixelated;
+    min-width: 180px;
   }
   .scroll-btn {
     position: absolute;

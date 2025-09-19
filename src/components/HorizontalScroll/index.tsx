@@ -9,6 +9,7 @@ import { HorizontalScrollWrap, ProjectSection } from "./index.style";
 import SpeechBubble from "../Bubble/SpeechBubble";
 import flowerIconImg from "../../assets/images/icon/flower-icon.png";
 import PixelPopup from "../Popup/PixelPopup";
+import { isMobile } from "react-device-detect";
 
 type ProjectItem = {
   id: number;
@@ -98,6 +99,7 @@ const HorizontalScroll: React.FC = () => {
   const [openPopupId, setOpenPopupId] = useState<number | null>(null);
 
   const resetOnMount = useRef(true);
+  const alertThrottle = useRef(false);
 
   useEffect(() => {
     if (resetOnMount.current) {
@@ -109,13 +111,20 @@ const HorizontalScroll: React.FC = () => {
       const currentScroll = window.scrollY;
 
       if (currentScroll < lastScrollY.current) {
-        alert("역방향 스크롤은 허용되지 않습니다.");
+        if (!alertThrottle.current) {
+          alert("역방향 스크롤은 허용되지 않습니다.");
+          alertThrottle.current = true;
+
+          setTimeout(() => {
+            alertThrottle.current = false;
+          }, 3000); // 3초 간격으로 alert 가능
+        }
+
         if (!resetOnMount.current) {
           window.scrollTo(0, lastScrollY.current);
         }
         return;
       }
-
       if (currentScroll > lastScrollY.current) {
         setAnimDirection("normal");
       } else if (currentScroll < lastScrollY.current) {
@@ -169,6 +178,44 @@ const HorizontalScroll: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isMobile) {
+      // 모바일은 wheel 이벤트 등록 안함
+      return;
+    }
+
+    const maxDelta = 5;
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+
+      let delta = e.deltaY;
+
+      if (delta > maxDelta) delta = maxDelta;
+      if (delta < -maxDelta) delta = -maxDelta;
+
+      const newScroll = Math.max(0, window.scrollY + delta);
+
+      window.scrollTo(0, newScroll);
+      setScrollY(newScroll);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
+  // 모바일에서 사용할 수 있는 스크롤 이동 함수
+  const scrollNext = (step: number) => {
+    const newScroll = Math.min(
+      document.body.scrollHeight - window.innerHeight,
+      window.scrollY + step
+    );
+    window.scrollTo({ top: newScroll, behavior: "smooth" });
+    setScrollY(newScroll);
+  };
+
   const animPlayState =
     Math.floor(animSpeed) !== speedBase ? "running" : "paused";
 
@@ -188,7 +235,7 @@ const HorizontalScroll: React.FC = () => {
 
   return (
     <>
-      <HorizontalScrollWrap>
+      <HorizontalScrollWrap className={isMobile ? "is-mobile" : ""}>
         <IntroSection className="career-container">
           <Backgrounds commonStyle={commonStyle} />
           <CycleCharacterScroll scrollY={scrollY} />
@@ -220,6 +267,20 @@ const HorizontalScroll: React.FC = () => {
           </div>
         </ProjectSection>
       </HorizontalScrollWrap>
+      {isMobile && (
+        <button
+          style={{
+            position: "fixed",
+            bottom: 20,
+            right: 20,
+            zIndex: 1000,
+            padding: "12px 24px",
+          }}
+          onClick={() => scrollNext(30)}
+        >
+          다음 &gt;
+        </button>
+      )}
       {projects.map(({ id, title, overview, techStack, achievements }) => (
         <PixelPopup
           key={id}

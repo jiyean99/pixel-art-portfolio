@@ -46,6 +46,9 @@ export const HorizontalScrollWrap = styled.div`
   @media (max-width: 425px) {
     height: 750vw;
   }
+  &.is-mobile {
+    touch-action: none;
+  }
 `;
 
 export const ProjectSection = styled.section`
@@ -93,6 +96,7 @@ export const ProjectSection = styled.section`
     left: 70%;
     width: 4%;
     height: auto;
+    min-width: 75px;
     max-width: 90px;
   }
 `;

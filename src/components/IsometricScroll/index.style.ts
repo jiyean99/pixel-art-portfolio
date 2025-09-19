@@ -9,7 +9,7 @@ export const IsometricScrollWrap = styled.div`
   top: 30%;
   left: 40%;
   transform-origin: center top;
-  transform: rotateX(55deg) rotateZ(21deg) translateY(calc(-1 * var(--scroll)));
+  transform: rotateX(50deg) rotateZ(37deg) translateY(calc(-1 * var(--scroll)));
   transform-style: preserve-3d;
   width: max-content;
   max-width: 80vw;
@@ -34,7 +34,8 @@ export const IsometricScrollWrap = styled.div`
   }
 
   .texture-animation-canvas {
-    left: -55% !important;
-    transform: rotateX(353deg) rotateZ(339.5deg) scale(1.5);
+    top: 80vh !important;
+    left: 30% !important;
+    transform: rotateX(360deg) rotateZ(325deg) scale(2);
   }
 `;
