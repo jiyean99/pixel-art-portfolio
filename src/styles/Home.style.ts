@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const bgMoveAni = keyframes`
+export const bgMoveAni = keyframes`
   0% {
     left: 0;
   }
@@ -8,7 +8,7 @@ const bgMoveAni = keyframes`
     left: -100%;
   }
 `;
-const repeatBgMoveAni = keyframes`
+export const repeatBgMoveAni = keyframes`
   0% {
     left: 99%;
   }
@@ -17,7 +17,17 @@ const repeatBgMoveAni = keyframes`
   }
 `;
 
-const stepsCount = 300; // 배경 이미지의 가로 픽셀 수
+export const stepsCount = 300; // 배경 이미지의 가로 픽셀 수
+
+export const CycleCharacterScrollWrap = styled.canvas`
+  position: fixed;
+  pointer-events: none;
+  bottom: 37%;
+  left: 19%;
+  aspect-ratio: 1 / 1;
+  width: 11.5% !important;
+  z-index: 1;
+`;
 
 export const IntroSection = styled.section`
   &.career-container {

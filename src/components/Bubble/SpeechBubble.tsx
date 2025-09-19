@@ -1,4 +1,5 @@
 import React from "react";
+import { SpeechBubbleWrap } from "./index.style";
 
 type SpeechBubbleProps = {
   children: React.ReactNode;
@@ -9,9 +10,9 @@ const SpeechBubble: React.FC<SpeechBubbleProps> = ({
   children,
   className = "",
 }) => (
-  <div className={`nes-speech-bubble ${className}`}>
-    <span className="nes-speech-content">{children}</span>
-  </div>
+  <SpeechBubbleWrap className={`${className}`}>
+    <span className="speech-content">{children}</span>
+  </SpeechBubbleWrap>
 );
 
 export default SpeechBubble;

@@ -22,6 +22,7 @@ const BasicLayoutWrap = styled.div`
   main {
     width: calc(100% - ${NavWidth});
     margin-left: ${NavWidth};
+    position: relative;
   }
   .ham-btn {
     display: none;

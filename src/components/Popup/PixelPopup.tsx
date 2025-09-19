@@ -1,4 +1,5 @@
 import React, { type PropsWithChildren, type CSSProperties } from "react";
+import { PixelPopupWrap } from "./index.style";
 
 type PixelPopupProps = PropsWithChildren<{
   visible: boolean;
@@ -61,61 +62,15 @@ const PixelPopup: React.FC<PixelPopupProps> = ({
 }) => {
   if (!visible) return null;
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: "rgba(10,10,10,0.24)",
-        zIndex: 999,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          position: "relative",
-          minWidth: 540,
-          maxWidth: 680,
-          minHeight: 320,
-          background: "#fff",
-          border: "4px solid #222",
-          boxSizing: "border-box",
-          boxShadow: "8px 8px 0 0 #aaa",
-          padding: "40px 42px 40px 42px",
-          ...style,
-        }}
-        className={className}
-      >
-        {/* 네 꼭짓점에 픽셀 계단 코너 */}
+    <PixelPopupWrap>
+      <div className={`popup-content ${className ?? ""}`} style={style}>
         <PixelClose onClick={onClose} />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 10,
-          }}
-        >
-          {!!title && (
-            <h2
-              style={{
-                margin: "0 0 28px 0",
-                fontWeight: 700,
-                fontSize: "2.1rem",
-                letterSpacing: "1px",
-                color: "#222",
-                lineHeight: 1.3,
-              }}
-            >
-              {title}
-            </h2>
-          )}
+        <div className="popup-inner">
+          {!!title && <h2 className="popup-title jersey-font">{title}</h2>}
           {children}
         </div>
       </div>
-    </div>
+    </PixelPopupWrap>
   );
 };
 

@@ -5,17 +5,27 @@ import Career from "./containers/views/Career";
 import Project from "./containers/views/Project";
 import Contact from "./containers/views/Contact";
 
-const AppRouter = () => (
-  <BrowserRouter basename="/pixel-art-portfolio">
-    <BasicLayout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/project" element={<Project />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BasicLayout>
-  </BrowserRouter>
-);
+import { useEffect } from "react";
+
+const AppRouter = () => {
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  return (
+    <BrowserRouter basename="/pixel-art-portfolio">
+      <BasicLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </BasicLayout>
+    </BrowserRouter>
+  );
+};
 
 export default AppRouter;
