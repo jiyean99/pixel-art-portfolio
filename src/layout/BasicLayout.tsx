@@ -30,6 +30,12 @@ const navItems: NavItem[] = [
 
 const BasicLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const navigate = useNavigate();
+
+  const handleSelect = (path: string) => {
+    navigate(path);
+    setNavOpen(false);
+  };
+
   const { pathname } = useLocation();
   const [navOpen, setNavOpen] = useState(false);
 
@@ -42,7 +48,7 @@ const BasicLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
       <Navigation
         items={navItems}
         active={pathname}
-        onSelect={navigate}
+        onSelect={handleSelect}
         isOpen={navOpen}
       />
       <main>{children}</main>
